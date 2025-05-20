@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>abchotel</title>
+    <script src="./bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+</head>
+
+<html>
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    body {
+        background-color: rgb(252, 250, 250);
+        color: black;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: end;
+        padding-right: 30px;
+
+
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .container1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .card {
+        padding-left: 20px;
+    }
+</style>
+<h1> ABC LUXURY HOTEL </h1>
+<div class="nav">
+    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#signupModal"> REGISTER</button>
+    <a href="#about" class="btn btn-outline-dark">ABOUT</a>
+</div>
+
+<div class="content">
+    <h2>Welcome to abc luxury hotel</h2>
+    <p>Experience the best stay with us</p>
+</div>
+<div><a href="#availablity" class="btn btn-light">Check-availablity</a>
+    <a href="#bookingForm" class="btn btn-light">Book Now</a>
+    <a href="#Booked" class="btn btn-light">Booked</a>
+    <a href="#food" class="btn btn-light">Food-menu</a>
+
+</div>
+<br>
+<div class="container1">
+    <div class="card"><img src="room2.jpg" alt="hotel" width="430px" height="300px">
+        <p>Standard room</p>
+    </div>
+    <div class="card"><img src="room1.jpg" alt="hotel" width="430px" height="300px">
+        <p>Standard room</p>
+    </div>
+    <div class="card"><img src="delux1.jpg" alt="hotel" width="430px" height="300px">
+        <p>deluxe room</p>
+    </div>
+    <div class="card"><img src="suit1.jpg" alt="hotel" width="430px" height="300px">
+        <p>Suite room</p>
+    </div>
+    <div class="card"><img src="delux2.jpg" alt="hotel" width="430px" height="300px">
+        <p>deluxe room</p>
+    </div>
+    <div class="card"><img src="suit2.jpg" alt="hotel" width="430px" height="300px">Suite room</div>
+
+</div>
+
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <form id="signupForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="signupName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="signupName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="signupEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signupPassword" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<center>
+<div class="container mt-5" id="availablity">
+    <div class="col-md-6">
+        <h2 class="text-center">Check Room Availability</h2>
+        <div class="p-4 border rounded bg-danger-subtle">
+            <div class="row justify-content-center">
+
+                <div class="mb-3">
+                    <label for="checkInDate" class="form-label">Check-in Date</label>
+                    <input type="date" class="form-control" id="checkInDate">
+                </div>
+                <div class="mb-3">
+                    <label for="checkOutDate" class="form-label">Check-out Date</label>
+                    <input type="date" class="form-control" id="checkOutDate">
+                </div>
+                <button class="btn btn-primary w-100" onclick="checkAvailability()">Check Availability</button>
+
+                <div id="availabilityResults"></div>
+            </div>
+        </div>
+        </div></div></center>
+
+
+
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center">Booking Form</h2>
+                    <form id="bookingForm" class="p-4 border rounded bg-danger-subtle">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Check-in Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Check-out Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select Room</label>
+                            <select class="form-control" required>
+                                <option>Deluxe Room</option>
+                                <option>Suite Room</option>
+                                <option>Standard Room</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5" id="view" style="display: none;">
+            <h3 class="text-center mb-4">Your Booking Summary</h3>
+            <div class="card bg-dark text-white p-4">
+                <p><strong>Name:</strong> <span id="summaryName"></span></p>
+                <p><strong>Check-in Date:</strong> <span id="summaryCheckIn"></span></p>
+                <p><strong>Check-out Date:</strong> <span id="summaryCheckOut"></span></p>
+                <p><strong>Room Type:</strong> <span id="summaryRoom"></span></p>
+            </div>
+        </div>
+
+        <!-- New Booked Section -->
+        <div class="container mt-5" id="booked" style="display: none;">
+    <h2 class="text-center">Booked Customers</h2>
+    <div id="bookedList" class="row"></div>
+</div>
+
+                
+                <div class="col-md-4" id="booking-John Doe">
+                    <div class="card p-3 m-2 bg-light">
+                        <h5 class="text-center" id="name-John Doe">Name</h5>
+                        <p><strong>Check-in:</strong> <span id="checkin-John Doe">-</span></p>
+                        <p><strong>Check-out:</strong> <span id="checkout-John Doe">-</span></p>
+                        <p><strong>Room:</strong> <span id="room-John Doe">-</span></p>
+                        <button class="btn btn-warning mt-2" onclick="editBooking('John Doe')">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mt-5" id="food">
+
+            <h2 class="text-center">Hotel Food Menu</h2>
+
+            <div class="text-center mb-4">
+                <button class="btn btn-outline-primary category-btn" onclick="filterMenu('all')">All</button>
+                <button class="btn btn-outline-secondary category-btn" onclick="filterMenu('starter')">Starters</button>
+                <button class="btn btn-outline-success category-btn" onclick="filterMenu('main')">Main Course</button>
+                <button class="btn btn-outline-danger category-btn" onclick="filterMenu('dessert')">Desserts</button>
+                <button class="btn btn-outline-dark category-btn" onclick="filterMenu('rolls')">rolls</button>
+                <button class="btn btn-outline-warning category-btn" onclick="filterMenu('drink')">Drinks</button>
+            </div>
+
+            <div id="menuList" class="row"></div>
+        </div>
+
+<!-- 
+        <script>
+
+            document.getElementById("bookingForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const fullName = this.querySelector('input[type="text"]').value;
+                const checkInDates = this.querySelectorAll('input[type="date"]');
+                const checkInDate = checkInDates[0].value;
+                const checkOutDate = checkInDates[1].value;
+                const room = this.querySelector('select').value;
+
+                // Create a booking card
+                const bookingCard = document.createElement("div");
+                bookingCard.className = "col-md-4";
+                bookingCard.innerHTML = `
+    <div class="card p-3 m-2 bg-light">
+        <h5 class="text-center" id="name-${fullName}">${fullName}</h5>
+        <p><strong>Check-in:</strong> <span id="checkin-${fullName}">${checkInDate}</span></p>
+        <p><strong>Check-out:</strong> <span id="checkout-${fullName}">${checkOutDate}</span></p>
+        <p><strong>Room:</strong> <span id="room-${fullName}">${room}</span></p>
+        <button class="btn btn-warning mt-2" onclick="editBooking('${fullName}')">Edit</button>
+    </div>
+`;
+                bookedList.appendChild(bookingCard);
+
+
+
+                function editBooking(fullName) {
+                    // Prompt the user to input new details
+                    const newName = prompt("Enter new name:", fullName);
+                    const newCheckIn = prompt("Enter new check-in date (yyyy-mm-dd):");
+                    const newCheckOut = prompt("Enter new check-out date (yyyy-mm-dd):");
+                    const newRoom = prompt("Enter new room type:");
+
+                    if (newName && newCheckIn && newCheckOut && newRoom) {
+                        
+                        document.getElementById(`name-${fullName}`).innerText = newName;
+                        document.getElementById(`checkin-${fullName}`).innerText = newCheckIn;
+                        document.getElementById(`checkout-${fullName}`).innerText = newCheckOut;
+                        document.getElementById(`room-${fullName}`).innerText = newRoom;
+
+                      
+                        let bookings = JSON.parse(localStorage.getItem("hotelBookings")) || [];
+
+                      
+                        bookings = bookings.map(b => {
+                            if (b.fullName === fullName) {
+                                return {
+                                    fullName: newName,
+                                    checkInDate: newCheckIn,
+                                    checkOutDate: newCheckOut,
+                                    room: newRoom
+                                };
+                            }
+                            return b;
+                        });
+
+                        // Save the updated bookings back to localStorage
+                        localStorage.setItem("hotelBookings", JSON.stringify(bookings));
+
+                        alert("Booking updated successfully!");
+                    } else {
+                        alert("All fields are required to update the booking!");
+                    }
+                }
+
+
+
+
+              
+                let bookings = JSON.parse(localStorage.getItem("hotelBookings")) || [];
+                bookings.push({ fullName, checkInDate, checkOutDate, room });
+                localStorage.setItem("hotelBookings", JSON.stringify(bookings));
+
+                this.reset();
+            });
+
+
+
+
+            const rooms = [
+                { id: 1, name: "Deluxe Room1", price: 1500, available: true },
+                { id: 2, name: "Suite Room1", price: 1800, available: true },
+                { id: 3, name: "Standard Room1", price: 1000, available: true },
+                { id: 4, name: "deluxe Room2", price: 1500, available: true },
+                { id: 5, name: "Suite Room2", price: 1800, available: true },
+                { id: 6, name: "Standard Room2", price: 1000, available: true }
+            ];
+
+
+            function checkAvailability() {
+                const checkInDate = document.getElementById("checkInDate").value;
+                const checkOutDate = document.getElementById("checkOutDate").value;
+                const availabilityDiv = document.getElementById("availabilityResults");
+
+                if (!checkInDate || !checkOutDate) {
+                    alert("Please select both check-in and check-out dates.");
+                    return;
+                }
+
+                let availableRoomsHTML = "<h3 class='text-center'>Available Rooms</h3><div class='row'>";
+
+                rooms.forEach(room => {
+                    availableRoomsHTML += `
+            <div class='col-md-4'>
+                <div class='card p-3 m-2'>
+                    <h5>${room.name}</h5>
+                    <button class='btn btn-success' onclick='bookRoom(${room.id}, "${room.name}")'>Book Now</button>
+                </div>
+            </div>`;
+                });
+
+                availableRoomsHTML += "</div>";
+                availabilityDiv.innerHTML = availableRoomsHTML;
+            }
+
+            function bookRoom(roomId, roomName) {
+                document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+                document.querySelector("#booking select").value = roomName;
+            }
+
+
+
+
+            const menuItems = [
+                { id: 1, name: "Tomato Soup", category: "starter", price: 5 },
+                { id: 2, name: "veg Salad", category: "starter", price: 7 },
+                { id: 3, name: "Grilled Chicken", category: "main", price: 15 },
+                { id: 4, name: "fried rice", category: "main", price: 12 },
+                { id: 5, name: "Chocolate Cake", category: "dessert", price: 8 },
+                { id: 6, name: "Mango Smoothie", category: "drink", price: 6 },
+                { id: 8, name: "mutton briyani", category: "main", price: 20 },
+                { id: 8, name: "chicken shawarma", category: "rolls", price: 20 },
+                { id: 7, name: "Coke", category: "drink", price: 3 }
+            ];
+
+            function displayMenu(items) {
+                const menuList = document.getElementById("menuList");
+                menuList.innerHTML = ""; // Clear previous items
+
+                if (items.length === 0) {
+                    menuList.innerHTML = "<p class='text-danger text-center'>No items available.</p>";
+                    return;
+                }
+
+                items.forEach(item => {
+                    menuList.innerHTML += `
+                <div class="col-md-4">
+                    <div class="menu-item">
+                        <h4>${item.name}</h4>
+                        <p>Price: $${item.price}</p>
+                    </div>
+                </div>
+              `;
+                });
+            }
+        
+
+            function filterMenu(category) {
+                if (category === "all") {
+                    displayMenu(menuItems);
+                } else {
+                    const filteredItems = menuItems.filter(item => item.category === category);
+                    displayMenu(filteredItems);
+                }
+            }
+            displayMenu(menuItems);
+
+            document.getElementById("bookingForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+
+                const fullName = this.querySelector('input[type="text"]').value;
+                const checkIn = this.querySelector('input[type="date"]').value;
+                const room = this.querySelector('select').value;
+
+                const booking = {
+                    fullName: fullName,
+                    checkInDate: checkIn,
+                    room: room
+                };
+
+                
+                let bookings = JSON.parse(localStorage.getItem("hotelBookings")) || [];
+
+                bookings.push(booking);
+
+              
+                localStorage.setItem("hotelBookings", JSON.stringify(bookings));
+
+                alert("Booking Confirmed and saved locally! Thank you for choosing our hotel.");
+
+              
+                this.reset();
+            });
+            
+
+        </script> -->
+
+        <div id="about" class="container mt-5">
+            <h2 class="text-center mb-4">About Us</h2>
+            <div class="row align-items-center">
+                
+                <div class="col-md-6">
+                    
+                    <img src="download.jpg" alt="ABC Luxury Hotel" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        Welcome to <strong>ABC Luxury Hotel</strong>, your perfect destination for a relaxing and
+                        unforgettable stay.
+                        Nestled in the heart of the city, our hotel offers a blend of elegance, comfort, and
+                        personalized service to
+                        ensure your experience is nothing short of exceptional.
+                    </p>
+                    <p>
+                        Whether you're here for business or leisure, our luxurious rooms, gourmet dining, world-class
+                        amenities, and
+                        attentive staff will make you feel right at home. We pride ourselves on delivering a premium
+                        experience
+                        that exceeds expectations.
+                    </p>
+                    <p>
+                        At ABC Luxury Hotel, your comfort is our priority. We invite you to unwind, explore, and enjoy a
+                        stay that’s
+                        truly memorable.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center mt-5 p-3 bg-dark text-white">
+            &copy; abc Luxury Hotel. All Rights Reserved.
+        </footer>
+<script src="script.js"></script>
+        </body>
+
+</html>
